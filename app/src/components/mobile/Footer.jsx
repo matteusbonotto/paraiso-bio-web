@@ -11,7 +11,7 @@ const Footer = () => {
                     .footer {
                         background-color: #333;
                         color: white;
-                        position: fixed;
+                        position: absolute;
                         bottom: 0;
                         width: 100%;
                         line-height: 10px;

@@ -12,6 +12,7 @@ const AppRoutes = () => {
   console.log('AppRoutes component rendered');
   return (
     <Router>
+      {/* wevApp /> */}
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,6 +22,9 @@ const AppRoutes = () => {
         <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
+
+      {/* Mobile /> */}
+      
     </Router>
   );
 };
