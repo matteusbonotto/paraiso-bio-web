@@ -20,10 +20,14 @@ const Home = () => {
 
       // Definição das áreas de destaque
       const areas = [
-        { x: 230, y: 145, width: 100, height: 100, color: 'red', text: 'G404' }, // Portaria
+        { x: 230, y: 145, width: 100, height: 100, color: 'red', text: 'G404' }, // Apartamento
         { x: 300, y: 60, width: 20, height: 30, color: 'blue', text: '75' }, // Vaga
-        { x: 350, y: 500, width: 100, height: 40, color: 'green', text: 'Portaria' } // Apartamento
+        { x: 350, y: 500, width: 100, height: 40, color: 'green', text: 'Portaria' } // Portaria
       ];
+
+      //Criar uma lista com as coordenadas de cada bloco e vaga em json.
+
+
 
       // Destacar as áreas
       areas.forEach(area => {
