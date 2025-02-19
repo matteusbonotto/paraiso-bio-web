@@ -1,7 +1,10 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const Footer = () => {
-    return (    
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
+    return (
         <footer className="footer">
             <style>
                 {`
@@ -14,15 +17,19 @@ const Footer = () => {
                         line-height: 10px;
                         padding-top: 10px;
                         text-align: center;
-                        jdisplay: flex;
-                        itwems-center: center;
+                        display: flex;
+                        align-items: center;
                         justify-content: center;
-                        text-size: 10px;
+                        font-size: 10px;
                     }
                 `}
             </style>
             <div className='flex items-center justify-center pb-5'>
-                <p>Desenvolvido por Matheus Bonotto 2025</p>
+                {isMobile ? (
+                    <p>Versão Mobile - Desenvolvido por Matheus Bonotto 2025</p>
+                ) : (
+                    <p>Versão Desktop - Desenvolvido por Matheus Bonotto 2025</p>
+                )}
             </div>
         </footer>
     );
