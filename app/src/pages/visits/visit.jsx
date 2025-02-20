@@ -1,5 +1,6 @@
 import React from 'react';
-import Mapa from '../components/Mapa';
+import Mapa from '../../components/web/MapaComponent/Mapa';
+
 const Visit = () => {
   const copiarEndereco = () => {
     const endereco = document.getElementById("endereco").innerText;
@@ -235,16 +236,6 @@ const Visit = () => {
           <Mapa />
           </div>
           <div className='pb-4'></div>  
-          {/* <div className="mb-3">
-            <iframe
-              width="100%"
-              height="250"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div> */}
         </div>
       </div>
 

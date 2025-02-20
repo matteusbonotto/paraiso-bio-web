@@ -1,18 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from '../pages/Home';
-import About from '../pages/About';
-import Apto from '../pages/apto/apto';
-import Visit from '../pages/visit';
-import Contact from '../pages/contact';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Home from '../pages/Home/Home';
+import About from '../pages/Abouts/About';
+import Apto from '../pages/aptos/apto';
+import Visit from '../pages/visits/visit';
+import Contact from '../pages/Contacts/contact';
+import Header from '../components/web/HeaderComponent/Header';
+import Footer from '../components/web/FooterComponent/Footer';
 
 const AppRoutes = () => {
   console.log('AppRoutes component rendered');
   return (
     <Router>
-      {/* wevApp /> */}
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,9 +21,6 @@ const AppRoutes = () => {
         <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
-
-      {/* Mobile /> */}
-      
     </Router>
   );
 };

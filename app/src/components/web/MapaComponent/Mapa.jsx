@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import MapaImagem from "../assets/images/mapa.jpg";
+import MapaImagem from '../../../assets/images/mapa.jpeg';
 
 const Mapa = () => {
   const canvasRef = useRef(null);
@@ -20,47 +20,47 @@ const Mapa = () => {
 
       // Definição das áreas de destaque
       const blocos = [
-        { id: 'A404', x: 245, y: 385, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'B404', x: 155, y: 385, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'C404', x: 65, y: 385, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'D404', x: 245, y: 270, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'E404', x: 155, y: 270, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'F404', x: 65, y: 270, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'G404', x: 245, y: 153, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'H404', x: 155, y: 153, color: 'red', background: 'yellow', fontColor: 'black' },
-        { id: 'I404', x: 65, y: 153, color: 'red', background: 'yellow', fontColor: 'black' }
+        { id: 'A404', x: 380, y: 459, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'B404', x: 245, y: 459, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'C404', x: 110, y: 459, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'D404', x: 380, y: 320, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'E404', x: 245, y: 320, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'F404', x: 110, y: 320, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'G404', x: 380, y: 190, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'H404', x: 245, y: 190, color: 'red', background: 'yellow', fontColor: 'black' },
+        { id: 'I404', x: 110, y: 190, color: 'red', background: 'yellow', fontColor: 'black' }
       ];
 
       const portaria = [
-        { id: 'Portaria', x: 350, y: 500, color: 'green', width: 100, height: 40, background: 'yellow', fontColor: 'black' }
+        { id: 'Portaria', x: 620, y: 590, color: 'green', width: 50, height: 30, background: 'yellow', fontColor: 'black' }
       ];
 
       const vagas = [
-        { id: '75', x: 299, y: 60, color: 'blue', background: 'yellow', fontColor: 'black' },
+        { id: '75', x: 470, y: 70, color: 'none', background: 'yellow', fontColor: 'black' },
       ];
 
       const areasData = [...blocos, ...portaria, ...vagas];
 
-      const defaultBlocoWidth = 85;
-      const defaultBlocoHeight = 95;
+      const defaultBlocoWidth = 139;
+      const defaultBlocoHeight = 100;
       const defaultVagaWidth = 20;
       const defaultVagaHeight = 30;
       const defaultPortariaWidth = 100;
       const defaultPortariaHeight = 40;
 
-      const drawBlocoTextBackground = (ctx, text, x, y, width, height, background) => {
+      const BlocoTextBackground = (ctx, text, x, y, width, height, background) => {
         if (background && background !== 'none') {
           ctx.fillStyle = background;
           const textWidth = ctx.measureText(text).width;
           const textX = x + (width - textWidth) / 2;
-          const textY = y + (height + 18) / 2;
-          ctx.fillRect(textX - 4, textY - 20, textWidth + 12, 31);
+          const textY = y + (height + 2) / 2;
+          ctx.fillRect(textX - 3, textY - 20, textWidth + 12, 33);
           return { textX, textY };
         }
         return { textX: x + (width - ctx.measureText(text).width) / 2, textY: y + (height + 18) / 2 };
       };
 
-      const drawVagaTextBackground = (ctx, text, x, y, width, height, background) => {
+      const VagaTextBackground = (ctx, text, x, y, width, height, background) => {
         if (background && background !== 'none') {
           ctx.fillStyle = background;
           const textWidth = ctx.measureText(text).width;
@@ -72,16 +72,16 @@ const Mapa = () => {
         return { textX: x + (width - ctx.measureText(text).width) / 2, textY: y + (height + 12) / 2 };
       };
 
-      const drawPortariaTextBackground = (ctx, text, x, y, width, height, background) => {
+      const PortariaTextBackground = (ctx, text, x, y, width, height, background) => {
         if (background && background !== 'none') {
           ctx.fillStyle = background;
           const textWidth = ctx.measureText(text).width;
           const textX = x + (width - textWidth) / 2;
-          const textY = y + (height + 18) / 2;
-          ctx.fillRect(textX - 1, textY - 10, textWidth + 10, 11);
+          const textY = y + (height + 4) / 2;
+          ctx.fillRect(textX - 5, textY - 6, textWidth + 10, 11);
           return { textX, textY };
         }
-        return { textX: x + (width - ctx.measureText(text).width) / 2, textY: y + (height + 18) / 2 };
+        return { textX: x + (width - ctx.measureText(text).width) / 2, textY: y + (height + 10) / 2 };
       };
 
       // Destacar as áreas
@@ -91,15 +91,15 @@ const Mapa = () => {
         if (blocos.some(bloco => bloco.id === area.id)) {
           width = area.width || defaultBlocoWidth;
           height = area.height || defaultBlocoHeight;
-          drawTextBackground = drawBlocoTextBackground;
+          drawTextBackground = BlocoTextBackground;
         } else if (vagas.some(vaga => vaga.id === area.id)) {
           width = area.width || defaultVagaWidth;
           height = area.height || defaultVagaHeight;
-          drawTextBackground = drawVagaTextBackground;
+          drawTextBackground = VagaTextBackground;
         } else if (portaria.some(port => port.id === area.id)) {
           width = area.width || defaultPortariaWidth;
           height = area.height || defaultPortariaHeight;
-          drawTextBackground = drawPortariaTextBackground;
+          drawTextBackground = PortariaTextBackground;
         }
 
         // Salva o contexto
@@ -133,7 +133,7 @@ const Mapa = () => {
   }, []);
 
   return (
-    <canvas ref={canvasRef} width={500} height={600}></canvas>
+    <canvas ref={canvasRef} width={800} height={699.9}></canvas>
   );
 };
 
