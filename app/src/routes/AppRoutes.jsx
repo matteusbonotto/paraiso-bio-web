@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import About from '../pages/About';
-import Apto from '../pages/apto';
+import Apto from '../pages/apto/apto';
 import Visit from '../pages/visit';
 import Contact from '../pages/contact';
 import Header from '../components/Header';
