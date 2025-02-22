@@ -14,13 +14,13 @@ const Footer = () => {
                         position: fixed;
                         bottom: 0;
                         width: 100%;
+                        height: 30px;
                         line-height: 10px;
-                        padding-top: 10px;
+                        padding-top: 22px;
                         text-align: center;
                         display: flex;
-                        align-items: center;
                         justify-content: center;
-                        font-size: 10px;
+                        font-size: 12px;
                     }
                 `}
             </style>

@@ -6,7 +6,7 @@ import logo from '../../../assets/images/logo.jpg';
 const Header = () => {
     return (    
         <header className="header">
-            <div className='flex items-center justify-center pb-5'>
+            <div className='flex items-center justify-center pb-3'>
             <img src={logo} alt="logo paraiso bio" className="rounded-full shadow" />
 
             </div>

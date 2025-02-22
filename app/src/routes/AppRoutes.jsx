@@ -11,7 +11,7 @@ import Footer from '../components/web/FooterComponent/Footer';
 const AppRoutes = () => {
   console.log('AppRoutes component rendered');
   return (
-    <Router>
+    <Router>  
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

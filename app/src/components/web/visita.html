@@ -325,33 +325,5 @@
       <p>Desenvolvido por Matheus Bonotto 2024</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      function copiarEndereco() {
-        const endereco = document.getElementById("endereco").innerText;
-        navigator.clipboard
-          .writeText(endereco)
-          .then(() => {
-            alert("Endereço copiado para a área de transferência!");
-          })
-          .catch((err) => {
-            console.error("Erro ao copiar o endereço: ", err);
-          });
-      }
-
-      function irParaEndereco() {
-        const endereco = document.getElementById("endereco").innerText;
-        const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-          endereco
-        )}`;
-        window.open(url, "_blank");
-      }
-
-      $(document).ready(function() {
-        $('#alertModal').modal('show');
-      });
-    </script>
   </body>
 </html>

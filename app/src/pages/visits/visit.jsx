@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Mapa from '../../components/web/MapaComponent/Mapa';
+import Modal from '../../components/web/ModalComponent/Modal';
 
 const Visit = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    setIsModalOpen(true);
+  }, []);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const copiarEndereco = () => {
     const endereco = document.getElementById("endereco").innerText;
     navigator.clipboard.writeText(endereco)
@@ -21,28 +36,9 @@ const Visit = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="modal fade" id="alertModal" tabIndex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="alertModalLabel">Aviso Importante</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <i className="fas fa-info-circle"></i> Tenha seu RG em mãos para ser autorizado na portaria, caso esteja de carro, também é necessário passar modelo, cor e a placa do veículo.
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h1 className="mt-4 text-center">Seja bem-vindo, visitante!</h1>
+      <h1 className="mt-4 text-4xl text-center">Seja bem-vindo, visitante!</h1>
       <div className="col-md-6 mb-2 mx-auto">
-        <div className="card bg-primary mb-3 h-700 mt-4" id="card-visita">
+        <div className="card mb-3 h-700 mt-4" id="card-visita">
           <div className="card-body">
             <h5 className="card-title text-center">
               <i className="fas fa-calendar-check"></i> Marcar uma visita?
@@ -105,7 +101,6 @@ const Visit = () => {
             >
               <i className="fab fa-uber" style={{ marginRight: '5px' }}></i> Ir de Uber
             </a>
-
             <button className="btn btn-primary" onClick={irParaEndereco}>
               <i className="fas fa-car"></i> Ir de carro
             </button>
@@ -232,13 +227,30 @@ const Visit = () => {
           </div>
 
           <h5 className="mt-4">Mapa:</h5>
-          <div className='flex items-center justify-center pb-4'>
-          <Mapa />
+          <div className="flex items-center justify-center pb-4">
+            <Mapa />
           </div>
-          <div className='pb-4'></div>  
+          <div className="flex justify-center pb-4">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.172658199793!2d-47.16316502328608!3d-22.943867579229124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8b7bde21c9bcd%3A0x1454d68fa07fa39f!2sR.%20Vandick%20Reidner%20P%20Coqueiro%2C%20597%20-%20Jardim%20Florence%2C%20Campinas%20-%20SP%2C%2013059-112!5e0!3m2!1spt-BR!2sbr!4v1735253269368!5m2!1spt-BR!2sbr"
+              width="80%"
+              height="250"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
         </div>
       </div>
 
+      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={openModal}>
+        Abrir Modal
+      </button>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Orientações para Visitas">
+        <p><i className="fas fa-info-circle"></i> Tenha seu RG em mãos para ser autorizado na portaria, caso esteja de carro, também é necessário passar modelo, cor e a placa do veículo.</p>
+      </Modal>
     </div>
   );
 };
